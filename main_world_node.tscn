@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://2fnnbbh6c8nq"]
+
+[ext_resource type="Script" uid="uid://bjfql0kol3hrs" path="res://main_world_node.gd" id="1_eq03t"]
+[ext_resource type="PackedScene" uid="uid://bxo17tf3kxivx" path="res://world.tscn" id="1_w81ew"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="2_eq03t"]
+
+[node name="MainWorldNode" type="Node3D" unique_id=456468911]
+script = ExtResource("1_eq03t")
+
+[node name="World" parent="." unique_id=475116200 instance=ExtResource("1_w81ew")]
+
+[node name="Player" parent="." unique_id=635456787 instance=ExtResource("2_eq03t")]
+transform = Transform3D(-0.24880826, 0, -0.96855277, 0, 1, 0, 0.96855277, 0, -0.24880826, 0, 0, 0)
+
+[node name="LevelContainer" type="Node3D" parent="." unique_id=940936524]
