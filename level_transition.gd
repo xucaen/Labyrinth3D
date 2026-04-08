@@ -16,7 +16,7 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		# 1. Ask GameManager for the next path
 		var next_path = GameManager.get_next_level_path()
-		
+		print("DEBUG:: Maze Name:",next_path)
 		# 2. Tell MainWorldNode to swap
 		var main_node = get_node("/root/MainWorldNode")
 		if main_node:

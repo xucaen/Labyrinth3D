@@ -1,21 +1,21 @@
 extends Node
 var target_spawn_name: String = "SpawnPoint"
-var current_level_id: int = 2112 # Start ID
+var current_level_id: int = 1 # Start ID
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 func get_next_level_path() -> String:
-	if current_level_id >= 2121:
+	if current_level_id >= 11:
 		print("Game Over! Returning to start.")
-		current_level_id = 2112 # Reset to start
+		current_level_id = 1 # Reset to start
 	else:
 		# Increment the ID
 		current_level_id += 1
 	
 	# Rebuild the string: "res://Level_2113.tscn"
-	return "res://Level_" + str(current_level_id) + ".tscn"
+	return "MazeLevel" + str(current_level_id)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
