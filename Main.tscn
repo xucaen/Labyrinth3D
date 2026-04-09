@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://cq12yp22jcc2o"]
+
+[ext_resource type="PackedScene" uid="uid://bp7fa25qbwauo" path="res://race_track.tscn" id="34_sph85"]
+[ext_resource type="Script" uid="uid://bjfql0kol3hrs" path="res://main.gd" id="main_gd"]
+[ext_resource type="PackedScene" path="res://MazeLevel1.tscn" id="MazeLevel1"]
+[ext_resource type="PackedScene" path="res://MazeLevel2.tscn" id="MazeLevel2"]
+[ext_resource type="PackedScene" path="res://MazeLevel3.tscn" id="MazeLevel3"]
+[ext_resource type="PackedScene" path="res://MazeLevel4.tscn" id="MazeLevel4"]
+[ext_resource type="PackedScene" path="res://MazeLevel5.tscn" id="MazeLevel5"]
+[ext_resource type="PackedScene" path="res://MazeLevel6.tscn" id="MazeLevel6"]
+[ext_resource type="PackedScene" path="res://MazeLevel7.tscn" id="MazeLevel7"]
+[ext_resource type="PackedScene" path="res://MazeLevel8.tscn" id="MazeLevel8"]
+[ext_resource type="PackedScene" path="res://MazeLevel9.tscn" id="MazeLevel9"]
+[ext_resource type="PackedScene" path="res://MazeLevel10.tscn" id="MazeLevel10"]
+[ext_resource type="PackedScene" path="res://MazeLevel11.tscn" id="MazeLevel11"]
+[ext_resource type="PackedScene" path="res://MazeLevel12.tscn" id="MazeLevel12"]
+[ext_resource type="PackedScene" path="res://MazeLevel13.tscn" id="MazeLevel13"]
+[ext_resource type="PackedScene" path="res://MazeLevel14.tscn" id="MazeLevel14"]
+[ext_resource type="PackedScene" path="res://MazeLevel15.tscn" id="MazeLevel15"]
+[ext_resource type="PackedScene" path="res://MazeLevel16.tscn" id="MazeLevel16"]
+[ext_resource type="PackedScene" path="res://MazeLevel17.tscn" id="MazeLevel17"]
+[ext_resource type="PackedScene" path="res://MazeLevel18.tscn" id="MazeLevel18"]
+[ext_resource type="PackedScene" path="res://MazeLevel19.tscn" id="MazeLevel19"]
+[ext_resource type="PackedScene" path="res://MazeLevel20.tscn" id="MazeLevel20"]
+[ext_resource type="PackedScene" path="res://MazeLevel21.tscn" id="MazeLevel21"]
+[ext_resource type="PackedScene" path="res://MazeLevel22.tscn" id="MazeLevel22"]
+[ext_resource type="PackedScene" uid="uid://h2nyxo7x7su1" path="res://MazeLevel23.tscn" id="MazeLevel23"]
+[ext_resource type="PackedScene" path="res://MazeLevel24.tscn" id="MazeLevel24"]
+[ext_resource type="PackedScene" path="res://MazeLevel25.tscn" id="MazeLevel25"]
+[ext_resource type="PackedScene" path="res://MazeLevel26.tscn" id="MazeLevel26"]
+[ext_resource type="PackedScene" path="res://MazeLevel27.tscn" id="MazeLevel27"]
+[ext_resource type="PackedScene" path="res://MazeLevel28.tscn" id="MazeLevel28"]
+[ext_resource type="PackedScene" path="res://MazeLevel29.tscn" id="MazeLevel29"]
+[ext_resource type="PackedScene" path="res://MazeLevel30.tscn" id="MazeLevel30"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="player"]
+[ext_resource type="PackedScene" uid="uid://bxo17tf3kxivx" path="res://world.tscn" id="world"]
+
+[node name="Main" type="Node3D" unique_id=1694290820]
+script = ExtResource("main_gd")
+
+[node name="MazeLevel1" parent="." unique_id=1269037520 instance=ExtResource("MazeLevel1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="MazeLevel2" parent="." unique_id=754047816 instance=ExtResource("MazeLevel2")]
+transform = Transform3D(0.87758255, 0, -0.47942555, 0, 1, 0, 0.47942555, 0, 0.87758255, 8.7758255, 25, 4.7942553)
+
+[node name="MazeLevel3" parent="." unique_id=1521098190 instance=ExtResource("MazeLevel3")]
+transform = Transform3D(0.5403023, 0, -0.84147096, 0, 1, 0, 0.84147096, 0, 0.5403023, 5.403023, 50, 8.414709)
+
+[node name="MazeLevel4" parent="." unique_id=917559829 instance=ExtResource("MazeLevel4")]
+transform = Transform3D(0.0707372, 0, -0.997495, 0, 1, 0, 0.997495, 0, 0.0707372, 0.70737195, 75, 9.97495)
+
+[node name="MazeLevel5" parent="." unique_id=1759879959 instance=ExtResource("MazeLevel5")]
+transform = Transform3D(-0.41614684, 0, -0.9092974, 0, 1, 0, 0.9092974, 0, -0.41614684, -4.1614685, 100, 9.092974)
+
+[node name="MazeLevel6" parent="." unique_id=1975569649 instance=ExtResource("MazeLevel6")]
+transform = Transform3D(-0.8011436, 0, -0.5984721, 0, 1, 0, 0.5984721, 0, -0.8011436, -8.0114355, 125, 5.984721)
+
+[node name="MazeLevel7" parent="." unique_id=874621285 instance=ExtResource("MazeLevel7")]
+transform = Transform3D(-0.9899925, 0, -0.14112, 0, 1, 0, 0.14112, 0, -0.9899925, -9.899925, 150, 1.4112)
+
+[node name="MazeLevel8" parent="." unique_id=1531226911 instance=ExtResource("MazeLevel8")]
+transform = Transform3D(-0.9364567, 0, 0.35078323, 0, 1, 0, -0.35078323, 0, -0.9364567, -9.364567, 175, -3.5078323)
+
+[node name="MazeLevel9" parent="." unique_id=2080856237 instance=ExtResource("MazeLevel9")]
+transform = Transform3D(-0.6536436, 0, 0.7568025, 0, 1, 0, -0.7568025, 0, -0.6536436, -6.536436, 200, -7.568025)
+
+[node name="MazeLevel10" parent="." unique_id=697876212 instance=ExtResource("MazeLevel10")]
+transform = Transform3D(-0.2107958, 0, 0.9775301, 0, 1, 0, -0.9775301, 0, -0.2107958, -2.107958, 225, -9.775301)
+
+[node name="MazeLevel11" parent="." unique_id=423644017 instance=ExtResource("MazeLevel11")]
+transform = Transform3D(0.2836622, 0, 0.9589243, 0, 1, 0, -0.9589243, 0, 0.2836622, 2.836622, 250, -9.589243)
+
+[node name="MazeLevel12" parent="." unique_id=447703414 instance=ExtResource("MazeLevel12")]
+transform = Transform3D(0.7086698, 0, 0.7055403, 0, 1, 0, -0.7055403, 0, 0.7086698, 7.0866976, 275, -7.0554028)
+
+[node name="MazeLevel13" parent="." unique_id=1497182865 instance=ExtResource("MazeLevel13")]
+transform = Transform3D(0.96017027, 0, 0.2794155, 0, 1, 0, -0.2794155, 0, 0.96017027, 9.601703, 300, -2.794155)
+
+[node name="MazeLevel14" parent="." unique_id=1495622390 instance=ExtResource("MazeLevel14")]
+transform = Transform3D(0.97658765, 0, -0.21511999, 0, 1, 0, 0.21511999, 0, 0.97658765, 9.765877, 325, 2.1511998)
+
+[node name="MazeLevel15" parent="." unique_id=1422761600 instance=ExtResource("MazeLevel15")]
+transform = Transform3D(0.75390226, 0, -0.6569866, 0, 1, 0, 0.6569866, 0, 0.75390226, 7.5390224, 350, 6.569866)
+
+[node name="MazeLevel16" parent="." unique_id=1863120026 instance=ExtResource("MazeLevel16")]
+transform = Transform3D(0.3466353, 0, -0.93799996, 0, 1, 0, 0.93799996, 0, 0.3466353, 3.4663532, 375, 9.379999)
+
+[node name="MazeLevel17" parent="." unique_id=274209478 instance=ExtResource("MazeLevel17")]
+transform = Transform3D(-0.14550003, 0, -0.98935825, 0, 1, 0, 0.98935825, 0, -0.14550003, -1.4550004, 400, 9.893582)
+
+[node name="MazeLevel18" parent="." unique_id=1602328786 instance=ExtResource("MazeLevel18")]
+transform = Transform3D(-0.6020119, 0, -0.7984871, 0, 1, 0, 0.7984871, 0, -0.6020119, -6.020119, 425, 7.9848714)
+
+[node name="MazeLevel19" parent="." unique_id=1344083162 instance=ExtResource("MazeLevel19")]
+transform = Transform3D(-0.91113025, 0, -0.4121185, 0, 1, 0, 0.4121185, 0, -0.91113025, -9.111302, 450, 4.121185)
+
+[node name="MazeLevel20" parent="." unique_id=2035912407 instance=ExtResource("MazeLevel20")]
+transform = Transform3D(-0.9971722, 0, 0.07515112, 0, 1, 0, -0.07515112, 0, -0.9971722, -9.971722, 475, -0.7515112)
+
+[node name="MazeLevel21" parent="." unique_id=201167375 instance=ExtResource("MazeLevel21")]
+transform = Transform3D(-0.8390715, 0, 0.5440211, 0, 1, 0, -0.5440211, 0, -0.8390715, -8.390715, 500, -5.4402113)
+
+[node name="MazeLevel22" parent="." unique_id=1951081163 instance=ExtResource("MazeLevel22")]
+transform = Transform3D(-0.47553694, 0, 0.8796958, 0, 1, 0, -0.8796958, 0, -0.47553694, -4.755369, 525, -8.796958)
+
+[node name="MazeLevel23" parent="." unique_id=1468506566 instance=ExtResource("MazeLevel23")]
+transform = Transform3D(0.004425698, 0, 0.9999902, 0, 1, 0, -0.9999902, 0, 0.004425698, 0.044256978, 550, -9.999903)
+
+[node name="MazeLevel24" parent="." unique_id=1849957851 instance=ExtResource("MazeLevel24")]
+transform = Transform3D(0.48330477, 0, 0.87545216, 0, 1, 0, -0.87545216, 0, 0.48330477, 4.833048, 575, -8.754521)
+
+[node name="MazeLevel25" parent="." unique_id=835810873 instance=ExtResource("MazeLevel25")]
+transform = Transform3D(0.84385395, 0, 0.53657293, 0, 1, 0, -0.53657293, 0, 0.84385395, 8.4385395, 600, -5.3657293)
+
+[node name="MazeLevel26" parent="." unique_id=1425107678 instance=ExtResource("MazeLevel26")]
+transform = Transform3D(0.99779826, 0, 0.066321895, 0, 1, 0, -0.066321895, 0, 0.99779826, 9.9779825, 625, -0.663219)
+
+[node name="MazeLevel27" parent="." unique_id=2007387536 instance=ExtResource("MazeLevel27")]
+transform = Transform3D(0.9074468, 0, -0.42016703, 0, 1, 0, 0.42016703, 0, 0.9074468, 9.074468, 650, 4.20167)
+
+[node name="MazeLevel28" parent="." unique_id=847869693 instance=ExtResource("MazeLevel28")]
+transform = Transform3D(0.59492064, 0, -0.80378443, 0, 1, 0, 0.80378443, 0, 0.59492064, 5.9492064, 675, 8.037845)
+
+[node name="MazeLevel29" parent="." unique_id=845109998 instance=ExtResource("MazeLevel29")]
+transform = Transform3D(0.13673721, 0, -0.9906074, 0, 1, 0, 0.9906074, 0, 0.13673721, 1.3673722, 700, 9.906074)
+
+[node name="MazeLevel30" parent="." unique_id=376335410 instance=ExtResource("MazeLevel30")]
+transform = Transform3D(-0.35492426, 0, -0.93489504, 0, 1, 0, 0.93489504, 0, -0.35492426, -3.5492425, 725, 9.34895)
+
+[node name="Player" parent="." unique_id=635456787 instance=ExtResource("player")]
+
+[node name="World" parent="." unique_id=475116200 instance=ExtResource("world")]
+
+[node name="RacetrackScene" parent="." unique_id=1514387170 instance=ExtResource("34_sph85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6597548, 548.795, -2.8979645)

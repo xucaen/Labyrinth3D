@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dytgtekeydw66"]
+
+[ext_resource type="PackedScene" uid="uid://chme1q61184x7" path="res://generated_track.tscn" id="1_yv1ie"]
+
+[node name="Node3D" type="Node3D" unique_id=195640809]
+
+[node name="RacetrackScene" parent="." unique_id=177064092 instance=ExtResource("1_yv1ie")]
