@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cjkxkmq5b24qp"]
 
 [ext_resource type="PackedScene" uid="uid://bbej3hr868n6f" path="res://alien_machine.tscn" id="34_sph85"]
+[ext_resource type="PackedScene" uid="uid://cf3mkaa2qhgtk" path="res://alien_diamond.tscn" id="35_o7g6l"]
 [ext_resource type="Script" uid="uid://c4ww0bbdq6w88" path="res://main.gd" id="main_gd"]
 [ext_resource type="PackedScene" path="res://MazeLevel1.tscn" id="MazeLevel1"]
 [ext_resource type="PackedScene" path="res://MazeLevel2.tscn" id="MazeLevel2"]
@@ -163,17 +164,20 @@ distance = 250.0
 offset = 741.0
 
 [node name="AlienMachine4" parent="." unique_id=142482118 instance=ExtResource("34_sph85")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2580.9875, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2580.9875, 0, 1491.2412)
 
 [node name="SimpleMover" parent="AlienMachine4/MeshInstance3D" parent_id_path=PackedInt32Array(142482118, 1287428899) index="0" unique_id=710754823]
 distance = 750.0
 offset = 44.0
 
 [node name="AlienMachine5" parent="." unique_id=1056887519 instance=ExtResource("34_sph85")]
-transform = Transform3D(1, 0, 0, 0, 0.035876278, -0.9993562, 0, 0.9993562, 0.035876278, 0, 1062.2998, 0)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -1740.6318, 1062.2998, -1193.5225)
 
 [node name="SimpleMover" parent="AlienMachine5/MeshInstance3D" parent_id_path=PackedInt32Array(1056887519, 1287428899) index="0" unique_id=710754823]
 offset = 99.0
+
+[node name="AlienDiamond" parent="." unique_id=1550482370 instance=ExtResource("35_o7g6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1550.8029, 0)
 
 [editable path="AlienMachine"]
 [editable path="AlienMachine6"]

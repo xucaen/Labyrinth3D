@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cf3mkaa2qhgtk"]
+
+[ext_resource type="Script" uid="uid://cyhs666620li8" path="res://simple_mover2.gd" id="2_1w4tb"]
+
+[sub_resource type="Gradient" id="Gradient_yw5ws"]
+offsets = PackedFloat32Array(0, 0.5397667, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.002969247, 0.0074231178, 0, 1, 0.4, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yw5ws"]
+noise_type = 2
+seed = 2
+frequency = 0.0134
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eq4e7"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_yw5ws")
+color_ramp = SubResource("Gradient_yw5ws")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eq4e7"]
+noise_type = 2
+frequency = 0.0443
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jux6c"]
+noise = SubResource("FastNoiseLite_eq4e7")
+as_normal_map = true
+bump_strength = 6.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jux6c"]
+albedo_color = Color(0.6666667, 0.15294118, 0.015686275, 1)
+metallic = 1.0
+metallic_specular = 0.59
+emission_enabled = true
+emission_energy_multiplier = 0.05
+emission_texture = SubResource("NoiseTexture2D_eq4e7")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_jux6c")
+
+[sub_resource type="Gradient" id="Gradient_1w4tb"]
+offsets = PackedFloat32Array(0.6269634, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.58431375, 0.0627451, 0.8666667, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wq0iv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dgsbm"]
+noise = SubResource("FastNoiseLite_wq0iv")
+color_ramp = SubResource("Gradient_1w4tb")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1w4tb"]
+
+[sub_resource type="Gradient" id="Gradient_hr54y"]
+offsets = PackedFloat32Array(0.94502616, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.03529412, 0.043137256, 0.5568628, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wd6jg"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bnq2d"]
+noise = SubResource("FastNoiseLite_wd6jg")
+color_ramp = SubResource("Gradient_hr54y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2wmn"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_energy_multiplier = 3.13
+emission_texture = SubResource("NoiseTexture2D_1w4tb")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_bnq2d")
+backlight_enabled = true
+backlight_texture = SubResource("NoiseTexture2D_dgsbm")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1w4tb"]
+material = SubResource("StandardMaterial3D_g2wmn")
+size = Vector3(500, 500, 500)
+
+[node name="AlienDiamond" type="Node3D" unique_id=52423914]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1287428899]
+transform = Transform3D(0.8535533, -0.14644662, 0.49999997, 0.49999997, 0.49999997, -0.70710677, -0.14644662, 0.8535533, 0.49999997, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_jux6c")
+mesh = SubResource("BoxMesh_1w4tb")
+
+[node name="SimpleMover" type="Node3D" parent="MeshInstance3D" unique_id=710754823]
+script = ExtResource("2_1w4tb")

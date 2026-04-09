@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://cqeq43s0ibfs8" path="res://alienmachine.gd" id="1_gjh4m"]
 [ext_resource type="Script" uid="uid://b08x8id2u88hy" path="res://simple_mover.gd" id="2_yw5ws"]
 
+[sub_resource type="Gradient" id="Gradient_yw5ws"]
+offsets = PackedFloat32Array(0, 0.5397667, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.002969247, 0.0074231178, 0, 1, 0.4, 1, 0, 1)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yw5ws"]
 noise_type = 2
 seed = 2
@@ -12,7 +16,17 @@ frequency = 0.0134
 width = 256
 height = 256
 noise = SubResource("FastNoiseLite_yw5ws")
+color_ramp = SubResource("Gradient_yw5ws")
 seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eq4e7"]
+noise_type = 2
+frequency = 0.0443
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jux6c"]
+noise = SubResource("FastNoiseLite_eq4e7")
+as_normal_map = true
+bump_strength = 6.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jux6c"]
 albedo_color = Color(0.6666667, 0.15294118, 0.015686275, 1)
@@ -21,10 +35,12 @@ metallic_specular = 0.59
 emission_enabled = true
 emission_energy_multiplier = 0.05
 emission_texture = SubResource("NoiseTexture2D_eq4e7")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_jux6c")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nbyaf"]
-radius = 43.945
-height = 200.0
+radius = 90.0
+height = 500.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw5ws"]
 albedo_color = Color(0, 0, 0, 1)
