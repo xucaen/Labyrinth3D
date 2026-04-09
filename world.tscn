@@ -1,13 +1,7 @@
 [gd_scene format=3 uid="uid://bxo17tf3kxivx"]
 
-[sub_resource type="Environment" id="Environment_gv5m4"]
-background_mode = 1
-background_color = Color(0.8627451, 0.0627451, 0.16862746, 1)
-background_energy_multiplier = 0.28
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://b1kyeu2o5bofy" path="res://WorldMegastructure.tscn" id="1_f3sb7"]
 
 [node name="World" type="Node3D" unique_id=475116200]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1211406859]
-environment = SubResource("Environment_gv5m4")
+[node name="Node3D" parent="." unique_id=273584794 instance=ExtResource("1_f3sb7")]
