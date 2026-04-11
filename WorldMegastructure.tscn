@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1kyeu2o5bofy"]
 
-[ext_resource type="Script" uid="uid://byns7k324nfif" path="res://GenerateWorldEnvironment.gd" id="1_0khdd"]
+[ext_resource type="Script" uid="uid://byns7k324nfif" path="res://scripts/GenerateWorldEnvironment.gd" id="1_0khdd"]
 
 [sub_resource type="Environment" id="Environment_0khdd"]
 background_mode = 1

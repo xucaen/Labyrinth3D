@@ -14,10 +14,10 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		# 1. Ask GameManager for the next path
-		var next_path = GameManager.get_next_level_path()
-		print("DEBUG:: Maze Name:",next_path)
-		# 2. Tell MainWorldNode to swap
-		var main_node = get_node("/root/Main")
-		if main_node:
-			main_node.transition_to_level(next_path)
+		# 1. Logic to increment the internal ID
+		print("On Body Enter fired!!")
+		GameManager.get_next_level_path()
+		
+		# 2. Teleport the player within the same scene
+		# 'owner' is the root of the Helix_Level_0.tscn
+		GameManager.spawn_player(get_tree().current_scene)

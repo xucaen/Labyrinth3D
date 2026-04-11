@@ -8,7 +8,7 @@ func _process(delta):
 	var offset = 1
 	if parent:
 		# Apply rotation to the parent's axes [cite: 10]
-		# Multiplying by delta keeps it smooth regardless of FPS [cite: 11]
+		# Multiplying by delta keeps it smooth regardless of FPS 
 		parent.rotate_x(rotation_speed * offset * delta)
 		parent.rotate_y(rotation_speed * offset * delta)
 		parent.rotate_z(rotation_speed * offset * delta)

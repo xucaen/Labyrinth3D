@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://player.tscn" id="player"]
+[ext_resource type="PackedScene" path="res://world.tscn" id="world"]
+[ext_resource type="PackedScene" path="res://Megastructure_Lvl0.tscn" id="megastructure"]
+
+[node name="Labyrinth" type="Node3D"]
+[node name="Player" parent="." instance=ExtResource("player")]
+[node name="World" parent="." instance=ExtResource("world")]
+[node name="Megastructure" parent="." instance=ExtResource("megastructure")]
+

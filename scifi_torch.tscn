@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dml143gwe3jcf"]
 
-[ext_resource type="Script" uid="uid://bnprheka2mf1p" path="res://flicker.gd" id="2_8kp15"]
+[ext_resource type="Script" uid="uid://2pb5tu08o6em" path="res://flicker.gd" id="2_8kp15"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8kp15"]
 emission_enabled = true
