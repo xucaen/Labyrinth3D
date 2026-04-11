@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dml143gwe3jcf"]
 
-[ext_resource type="Script" uid="uid://2pb5tu08o6em" path="res://flicker.gd" id="2_8kp15"]
+[ext_resource type="Script" uid="uid://2pb5tu08o6em" path="res://flicker.gd" id="1_m0twc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8kp15"]
 emission_enabled = true
@@ -9,11 +9,11 @@ emission = Color(1, 0.4862745, 0.23921569, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_vr11s"]
 material = SubResource("StandardMaterial3D_8kp15")
 
-[node name="ScifiTorch" type="Node3D" unique_id=1060110709]
+[node name="ScifiTorchRound" type="Node3D" unique_id=1060110709]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1279209660]
 mesh = SubResource("SphereMesh_vr11s")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" unique_id=279632892]
 light_color = Color(0.9905583, 1, 0.75342906, 1)
-script = ExtResource("2_8kp15")
+script = ExtResource("1_m0twc")

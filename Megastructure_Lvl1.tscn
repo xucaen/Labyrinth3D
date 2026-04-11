@@ -1,10 +1,10 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://Helix_Level_0.tscn" id="helix_scene"]
+[ext_resource type="PackedScene" path="res://Helix_Level_1.tscn" id="helix_scene"]
 [ext_resource type="PackedScene" path="res://alien_diamond.tscn" id="diamond"]
 [ext_resource type="PackedScene" path="res://alien_machine.tscn" id="machine"]
 
-[node name="Megastructure_Lvl0" type="Node3D"]
+[node name="Megastructure_Lvl1" type="Node3D"]
 
 [node name="MazeHelix" parent="." instance=ExtResource("helix_scene")]
 
