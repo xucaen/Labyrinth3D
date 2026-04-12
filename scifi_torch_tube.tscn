@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b0c18cb5ca8pt"]
+
+[ext_resource type="Script" path="res://Scripts/flicker.gd" id="1_wy4lc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wy4lc"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 2.17
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_lae1p"]
+material = SubResource("StandardMaterial3D_wy4lc")
+
+[node name="ScifiTorchTube" type="Node3D" unique_id=1428049321]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=257403722]
+mesh = SubResource("TubeTrailMesh_lae1p")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" unique_id=1495315728]
+light_color = Color(0.9905583, 1, 0.75342906, 1)
+script = ExtResource("1_wy4lc")

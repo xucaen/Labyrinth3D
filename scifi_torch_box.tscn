@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cwwfh64df24nt"]
+
+[ext_resource type="Script" path="res://Scripts/flicker.gd" id="1_5k2ne"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5k2ne"]
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 2.17
+
+[sub_resource type="BoxMesh" id="BoxMesh_wupcv"]
+material = SubResource("StandardMaterial3D_5k2ne")
+
+[node name="ScifiTorchBox" type="Node3D" unique_id=658343207]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=103784840]
+mesh = SubResource("BoxMesh_wupcv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" unique_id=2010914835]
+light_color = Color(0.9905583, 1, 0.75342906, 1)
+script = ExtResource("1_5k2ne")

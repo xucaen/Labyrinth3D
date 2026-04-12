@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://crrko1juwmlk5"]
+
+[ext_resource type="Script" path="res://Scripts/flicker.gd" id="1_ysjmr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysjmr"]
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 2.17
+
+[sub_resource type="TorusMesh" id="TorusMesh_rhpdw"]
+material = SubResource("StandardMaterial3D_ysjmr")
+
+[node name="ScifiTorchTorus" type="Node3D" unique_id=1896147055]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=90145252]
+mesh = SubResource("TorusMesh_rhpdw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" unique_id=880698924]
+light_color = Color(0.9905583, 1, 0.75342906, 1)
+script = ExtResource("1_ysjmr")
