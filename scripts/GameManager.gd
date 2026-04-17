@@ -1,15 +1,50 @@
-#GameManager.gd
+# GameManager.gd
 extends Node
-
 var target_spawn_name: String = "SpawnPoint"
 var current_level_id: int = 0 
 
-func _ready() -> void:
-	# Wait for the scene to be ready so find_child works correctly
-	await get_tree().process_frame
-	spawn_player(get_tree().current_scene)
 
+func _ready() -> void:
+	# Wait one frame to ensure all nodes from the .tscn are initialized
+	await get_tree().process_frame
+	spawn_at_markers()
+
+#Spawn player and vehicles
+func spawn_at_markers():
+	var root = get_tree().current_scene
+	
+	# Mapping the Node Name to its corresponding Marker Name
+	var spawn_map = {
+		"Player": "PlayerSpawn",
+		"Cycle": "CycleSpawn",
+		"SpaceFighter": "SpaceFighterSpawn",
+		"PropellerPack": "PropPackSpawn"
+	}
+
+	for entity_name in spawn_map:
+		var entity = root.find_child(entity_name, true, false)
+		var marker = root.find_child(spawn_map[entity_name], true, false)
+		
+		if entity and marker:
+			# Move entity to the marker's roof position
+			entity.global_position = marker.global_position
+			
+			# Reset velocity for the player to prevent physics glitches on spawn
+			if entity_name == "Player" and entity is CharacterBody3D:
+				entity.velocity = Vector3.ZERO 
+			
+			print("Successfully spawned ", entity_name, " at roof.")
+		else:
+			push_warning("Could not find ", entity_name, " or ", spawn_map[entity_name])
+
+
+
+
+
+#when player enters the ExitArea of any maze, get it's level number and go to the next one
 func get_next_level_path() -> String:
+	
+
 	var next_id = current_level_id + 1
 	var next_section_name = "MazeSection_" + str(next_id)
 	
@@ -24,7 +59,7 @@ func get_next_level_path() -> String:
 		current_level_id = 0
 		print("No more mazes. Returning to MazeSection_0")
 	
-	return "MazeSection_" + str(current_level_id)
+	return "MazeSection_" + str(current_level_id)			
 
 func spawn_player(current_scene: Node):
 	var section_name = "MazeSection_" + str(current_level_id)

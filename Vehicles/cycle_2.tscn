@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://b7ugfxmnk7dw4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i2uag"]
+radius = 0.889
+height = 7.836
+
+[sub_resource type="TorusMesh" id="TorusMesh_m2ieh"]
+inner_radius = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tire"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pvufr"]
+height = 4.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frame"]
+albedo_color = Color(0.15, 0.15, 0.15, 1)
+metallic = 1.0
+roughness = 0.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b5t5u"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m2ieh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_accent"]
+albedo_color = Color(0, 0.5, 1, 1)
+metallic = 0.5
+roughness = 0.1
+emission_enabled = true
+emission = Color(0, 0.2, 0.5, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_b2al5"]
+size = Vector3(0.4, 3.5, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chrome"]
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+metallic = 1.0
+roughness = 0.05
+
+[sub_resource type="PrismMesh" id="PrismMesh_m2ieh"]
+size = Vector3(0.1, 2, 0.1)
+
+[node name="Cycle" type="VehicleBody3D" unique_id=1796636741]
+mass = 500.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.4, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=250078703]
+transform = Transform3D(0.9999952, 0.0015269875, 0.0027087186, 0.002708657, 4.4561923e-05, -0.9999964, -0.0015270975, 0.999999, 4.0423125e-05, 0, -0.11427128, 0.5965872)
+shape = SubResource("CapsuleShape3D_i2uag")
+
+[node name="RearWheel" type="VehicleWheel3D" parent="." unique_id=1676996894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+use_as_traction = true
+suspension_stiffness = 40.0
+
+[node name="Mesh" type="MeshInstance3D" parent="RearWheel" unique_id=934630480]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_m2ieh")
+surface_material_override/0 = SubResource("StandardMaterial3D_tire")
+
+[node name="MainFrame" type="MeshInstance3D" parent="." unique_id=252737071]
+transform = Transform3D(1, 0, 0, 0, -0.0745784, 0.997215, 0, -0.997215, -0.0745784, 0, 0.1, 0.5)
+mesh = SubResource("CapsuleMesh_pvufr")
+surface_material_override/0 = SubResource("StandardMaterial3D_frame")
+
+[node name="SeatArea" type="MeshInstance3D" parent="." unique_id=453283829]
+transform = Transform3D(1, 0, 0, 0, 0.10846762, -0.9941003, 0, 0.9941003, 0.10846762, 0, 0.34710735, -0.44909227)
+mesh = SubResource("CapsuleMesh_b5t5u")
+surface_material_override/0 = SubResource("StandardMaterial3D_tire")
+
+[node name="Gastank" type="MeshInstance3D" parent="." unique_id=461649718]
+transform = Transform3D(1, 0, 0, 0, 0.35221738, -0.9359183, 0, 0.9359183, 0.35221738, 0, 0.484375, 1.3441963)
+mesh = SubResource("CapsuleMesh_m2ieh")
+surface_material_override/0 = SubResource("StandardMaterial3D_accent")
+
+[node name="FrontWheel" type="VehicleWheel3D" parent="." unique_id=1117425547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+use_as_steering = true
+suspension_stiffness = 40.0
+
+[node name="Mesh" type="MeshInstance3D" parent="FrontWheel" unique_id=336965241]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_m2ieh")
+surface_material_override/0 = SubResource("StandardMaterial3D_tire")
+
+[node name="Front Suspension" type="Node3D" parent="FrontWheel" unique_id=714800739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="FrontFork" type="MeshInstance3D" parent="FrontWheel/Front Suspension" unique_id=1101382117]
+transform = Transform3D(1, 0, 0, 0, -0.422618, 0.906308, 0, -0.906308, -0.422618, 0, 0.72201335, 2.5)
+mesh = SubResource("PrismMesh_b2al5")
+surface_material_override/0 = SubResource("StandardMaterial3D_chrome")
+
+[node name="left handlebar" type="MeshInstance3D" parent="FrontWheel/Front Suspension" unique_id=524068997]
+transform = Transform3D(0.9852022, -0.14112818, -0.09725971, -0.17139606, -0.81121916, -0.5590587, 0, 0.5674558, -0.8234037, 0.30392146, 1.0511217, 3.3714743)
+mesh = SubResource("PrismMesh_m2ieh")
+surface_material_override/0 = SubResource("StandardMaterial3D_chrome")
+
+[node name="right handlebar" type="MeshInstance3D" parent="FrontWheel/Front Suspension" unique_id=1674497559]
+transform = Transform3D(0.937317, 0.072517395, -0.3408492, -0.14433114, -0.8094845, -0.56912476, -0.31718367, 0.5826455, -0.74827707, -0.32081315, 1.0511217, 3.3714743)
+mesh = SubResource("PrismMesh_m2ieh")
+surface_material_override/0 = SubResource("StandardMaterial3D_chrome")

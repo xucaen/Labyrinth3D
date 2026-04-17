@@ -1,0 +1,345 @@
+[gd_scene format=3 uid="uid://cfafgw3q1jmiy"]
+
+[ext_resource type="Script" uid="uid://db2jyeqh5xhtq" path="res://scripts/spaceFighter.gd" id="1_ylxob"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixxwf"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0, 0, 0.07058824, 1)
+refraction_enabled = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_ys0nq"]
+material = SubResource("StandardMaterial3D_ixxwf")
+left_to_right = -0.2
+size = Vector3(8, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_10rpo"]
+top_radius = 0.3
+bottom_radius = 0.3
+radial_segments = 8
+rings = 18
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_robr1"]
+radius = 0.4
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3m3n"]
+albedo_color = Color(0.1, 0.3, 0.5, 1)
+metallic = 1.0
+roughness = 0.1
+clearcoat_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10rpo"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 0.73
+emission_enabled = true
+emission = Color(0.95686275, 0.101960786, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gq4bl"]
+material = SubResource("StandardMaterial3D_10rpo")
+size = Vector3(0.1, 0.01, 4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_j4mt1"]
+radius = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gq4bl"]
+top_radius = 0.1
+bottom_radius = 0.05
+height = 4.482
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ixxwf"]
+top_radius = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ys0nq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84njx"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_b4uhb"]
+top_radius = 0.3
+bottom_radius = 0.4
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cl0ny"]
+albedo_color = Color(0.12, 0.12, 0.14, 1)
+metallic = 0.8
+roughness = 0.4
+rim_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2x2ts"]
+albedo_color = Color(0, 0.8, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.6, 1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_mh6th"]
+left_to_right = 0.1
+size = Vector3(4, 0.4, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qoed5"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 0.3
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osg0q"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uqv20"]
+radius = 0.879
+height = 9.197
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uqv20"]
+radius = 4.0
+
+[node name="Space Fighter 3 w Lights" type="CharacterBody3D" unique_id=1435120786]
+script = ExtResource("1_ylxob")
+
+[node name="Fusalage" type="Node3D" parent="." unique_id=203953442]
+
+[node name="MeshBox" type="MeshInstance3D" parent="Fusalage" unique_id=686869367]
+transform = Transform3D(-4.3711385e-08, 0, 1, 0, 0.99999994, 0, -0.99999994, 0, -4.371139e-08, 0, 0.28486586, -1.5647128)
+mesh = SubResource("PrismMesh_ys0nq")
+
+[node name="MeshCylinder" type="MeshInstance3D" parent="Fusalage" unique_id=787675702]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.14611101, 2.992428)
+mesh = SubResource("CylinderMesh_10rpo")
+
+[node name="Cockpit" type="MeshInstance3D" parent="Fusalage" unique_id=871758713]
+transform = Transform3D(1, 0, 0, 0, 0.19579206, -0.9806454, 0, 0.9806454, 0.19579206, 0, 0.36105543, -0.46532863)
+mesh = SubResource("CapsuleMesh_robr1")
+surface_material_override/0 = SubResource("StandardMaterial3D_l3m3n")
+
+[node name="CockpitBeautyLight2" type="SpotLight3D" parent="Fusalage/Cockpit" unique_id=281866847]
+transform = Transform3D(-0.31808764, -0.9480473, 0.005167259, 0.36561996, -0.11764, 0.9233001, -0.8747241, 0.29557964, 0.38404477, 0.019721985, 1.7464077, 2.0666962)
+light_color = Color(0.85, 0.92, 1, 1)
+light_energy = 2.5
+spot_range = 5.726
+spot_attenuation = 2.0
+spot_angle = 20.76
+
+[node name="CockpitBeautyLight" type="SpotLight3D" parent="Fusalage/Cockpit" unique_id=1238894865]
+transform = Transform3D(0.69574463, 0.7178455, -0.025248265, -0.09390397, 0.12574929, 0.9876079, 0.7121247, -0.6847519, 0.1548979, 0.037259102, -0.7406379, -0.539872)
+light_color = Color(0.85, 0.92, 1, 1)
+light_energy = 2.5
+spot_range = 6.113
+spot_attenuation = 2.0
+spot_angle = 25.0
+
+[node name="racing stripe" type="MeshInstance3D" parent="Fusalage" unique_id=1848674099]
+transform = Transform3D(1, 0, 0, 0, 0.9946633, 0.10317446, 0, -0.10317446, 0.9946633, 0, 0.017103076, -3.307777)
+mesh = SubResource("BoxMesh_gq4bl")
+
+[node name="Turrets" type="Node3D" parent="Fusalage" unique_id=99229545]
+
+[node name="turret_R" type="MeshInstance3D" parent="Fusalage/Turrets" unique_id=1283218362]
+transform = Transform3D(1, 0, 0, 0, -0.01085569, 0.9999411, 0, -0.9999411, -0.01085569, 0.5396197, -0.0083909035, -2.3053608)
+mesh = SubResource("SphereMesh_j4mt1")
+
+[node name="meshCyl" type="MeshInstance3D" parent="Fusalage/Turrets/turret_R" unique_id=1116661917]
+transform = Transform3D(1, 0, 0, 0, -0.999941, 0.0108557325, 0, -0.0108557325, -0.999941, 0.001108408, 2.1958158, 0.02317655)
+mesh = SubResource("CylinderMesh_gq4bl")
+
+[node name="turret_L" type="MeshInstance3D" parent="Fusalage/Turrets" unique_id=704084208]
+transform = Transform3D(1, 0, 0, 0, -0.01085569, 0.9999411, 0, -0.9999411, -0.01085569, -0.54, -0.008, -2.305)
+mesh = SubResource("SphereMesh_j4mt1")
+
+[node name="meshCyl" type="MeshInstance3D" parent="Fusalage/Turrets/turret_L" unique_id=1841538654]
+transform = Transform3D(1, 0, 0, 0, -0.999941, 0.0108557325, 0, -0.0108557325, -0.999941, 0.001108408, 2.1958158, 0.02317655)
+mesh = SubResource("CylinderMesh_gq4bl")
+
+[node name="Wings" type="Node3D" parent="Fusalage" unique_id=475288423]
+
+[node name="upper" type="Node3D" parent="Fusalage/Wings" unique_id=1313175375]
+
+[node name="Wing_UL" type="Node3D" parent="Fusalage/Wings/upper" unique_id=2045926284]
+transform = Transform3D(0.978509, -0.20620419, 0, 0.20620419, 0.978509, 0, 0, 0, 1, 1.5, -1.5, -0.5)
+
+[node name="Nacelle1" type="Node3D" parent="Fusalage/Wings/upper/Wing_UL" unique_id=866156842]
+transform = Transform3D(-0.46947154, -0.88294744, -1.6461249e-07, 0.88294744, -0.46947154, -4.1042505e-08, -4.1042508e-08, -1.6461249e-07, 1, -4.089509, 5.025552, 5.9604645e-08)
+
+[node name="coneMesh" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UL/Nacelle1" unique_id=1721722521]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ixxwf")
+
+[node name="cylinderMesh" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UL/Nacelle1" unique_id=1864688931]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 1.9833121)
+mesh = SubResource("CylinderMesh_ys0nq")
+surface_material_override/0 = SubResource("StandardMaterial3D_84njx")
+
+[node name="Thruster_L" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UL/Nacelle1" unique_id=202428885]
+transform = Transform3D(-0.99963313, -0.02708429, 1.1838922e-09, 0, -4.37114e-08, -1, 0.02708429, -0.99963313, 4.3695362e-08, 0, 0, 3)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_cl0ny")
+
+[node name="Glow" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UL/Nacelle1/Thruster_L" unique_id=2113173050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_2x2ts")
+
+[node name="Wing" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UL" unique_id=708362481]
+transform = Transform3D(-0.46947154, 0.88294744, 8.742278e-08, 0.88294744, 0.46947154, 0, -4.1042508e-08, 7.718972e-08, -1, -2.4287622, 3.5692182, 2.0000517)
+mesh = SubResource("PrismMesh_mh6th")
+surface_material_override/0 = SubResource("StandardMaterial3D_qoed5")
+
+[node name="Wing_UR" type="Node3D" parent="Fusalage/Wings/upper" unique_id=1466939687]
+transform = Transform3D(-0.978509, 0.20620419, -8.742278e-08, 0.20620419, 0.978509, 0, 8.5543974e-08, -1.8026943e-08, -1, -1.5, -1.5, 3.5)
+
+[node name="Nacelle1" type="Node3D" parent="Fusalage/Wings/upper/Wing_UR" unique_id=702343449]
+transform = Transform3D(0.3436596, 0.93909407, -8.742277e-08, 0.93909407, -0.3436596, -1.7763568e-15, -3.0043683e-08, -8.209822e-08, -1, -4.0895085, 5.025552, 3.9426942)
+
+[node name="coneMesh" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UR/Nacelle1" unique_id=1426382967]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ixxwf")
+
+[node name="cylinderMesh" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UR/Nacelle1" unique_id=866822242]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 1.9833121)
+mesh = SubResource("CylinderMesh_ys0nq")
+surface_material_override/0 = SubResource("StandardMaterial3D_osg0q")
+
+[node name="Thruster_L" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UR/Nacelle1" unique_id=318394949]
+transform = Transform3D(-0.99963313, -0.02708429, 1.1838922e-09, 0, -4.37114e-08, -1, 0.02708429, -0.99963313, 4.3695362e-08, 0, 0, 3)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_cl0ny")
+
+[node name="Glow" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UR/Nacelle1/Thruster_L" unique_id=1534494431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_2x2ts")
+
+[node name="Wing" type="MeshInstance3D" parent="Fusalage/Wings/upper/Wing_UR" unique_id=701986862]
+transform = Transform3D(-0.46947154, 0.88294744, 8.742278e-08, 0.88294744, 0.46947154, 0, -4.1042508e-08, 7.718972e-08, -1, -2.4287622, 3.5692182, 2.0000517)
+mesh = SubResource("PrismMesh_mh6th")
+surface_material_override/0 = SubResource("StandardMaterial3D_qoed5")
+
+[node name="SelfLighting" type="Node3D" parent="Fusalage/Wings/upper" unique_id=1673553127]
+
+[node name="WingReflector_L" type="SpotLight3D" parent="Fusalage/Wings/upper/SelfLighting" unique_id=880882]
+transform = Transform3D(0.2814001, 0.5698335, 0.77207744, 0.15626836, 0.76663756, -0.6227738, -0.9467809, 0.29589993, 0.126685, 0.4080925, 0.6407778, 0.013208032)
+light_color = Color(1, 0.98, 0.9, 1)
+light_energy = 4.0
+spot_range = 4.5
+spot_attenuation = 0.6
+spot_angle = 15.0
+
+[node name="WingReflector_R" type="SpotLight3D" parent="Fusalage/Wings/upper/SelfLighting" unique_id=1875245760]
+transform = Transform3D(0.011225343, 0.51397574, -0.85773134, 0.11207796, -0.8530268, -0.5096898, -0.99363595, -0.090411246, -0.0671809, -0.3770517, 0.6902267, 0.05568099)
+light_color = Color(1, 0.98, 0.9, 1)
+light_energy = 4.0
+spot_range = 4.5
+spot_attenuation = 0.6
+spot_angle = 15.0
+
+[node name="lower" type="Node3D" parent="Fusalage/Wings" unique_id=1485925820]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Wing_UL" type="Node3D" parent="Fusalage/Wings/lower" unique_id=1616742317]
+transform = Transform3D(0.978509, -0.20620419, 0, 0.20620419, 0.978509, 0, 0, 0, 1, 1.5, -1.5, -0.5)
+
+[node name="Nacelle1" type="Node3D" parent="Fusalage/Wings/lower/Wing_UL" unique_id=590885211]
+transform = Transform3D(-0.46947154, -0.88294744, -1.6461249e-07, 0.88294744, -0.46947154, -4.1042505e-08, -4.1042508e-08, -1.6461249e-07, 1, -4.089509, 5.025552, 5.9604645e-08)
+
+[node name="coneMesh" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UL/Nacelle1" unique_id=445031026]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ixxwf")
+
+[node name="cylinderMesh" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UL/Nacelle1" unique_id=1701171667]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 1.9833121)
+mesh = SubResource("CylinderMesh_ys0nq")
+surface_material_override/0 = SubResource("StandardMaterial3D_84njx")
+
+[node name="Thruster_L" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UL/Nacelle1" unique_id=1362580281]
+transform = Transform3D(-0.99963313, -0.02708429, 1.1838922e-09, 0, -4.37114e-08, -1, 0.02708429, -0.99963313, 4.3695362e-08, 0, 0, 3)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_cl0ny")
+
+[node name="Glow" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UL/Nacelle1/Thruster_L" unique_id=408345160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_2x2ts")
+
+[node name="Wing" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UL" unique_id=496500319]
+transform = Transform3D(-0.46947154, 0.88294744, 8.742278e-08, 0.88294744, 0.46947154, 0, -4.1042508e-08, 7.718972e-08, -1, -2.4287622, 3.5692182, 2.0000517)
+mesh = SubResource("PrismMesh_mh6th")
+surface_material_override/0 = SubResource("StandardMaterial3D_qoed5")
+
+[node name="Wing_UR" type="Node3D" parent="Fusalage/Wings/lower" unique_id=1007742020]
+transform = Transform3D(-0.978509, 0.20620419, -8.742278e-08, 0.20620419, 0.978509, 0, 8.5543974e-08, -1.8026943e-08, -1, -1.5, -1.5, 3.5)
+
+[node name="Nacelle1" type="Node3D" parent="Fusalage/Wings/lower/Wing_UR" unique_id=815507821]
+transform = Transform3D(0.3436596, 0.93909407, -8.742277e-08, 0.93909407, -0.3436596, -1.7763568e-15, -3.0043683e-08, -8.209822e-08, -1, -4.0895085, 5.025552, 3.9426942)
+
+[node name="coneMesh" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UR/Nacelle1" unique_id=1633029845]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ixxwf")
+
+[node name="cylinderMesh" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UR/Nacelle1" unique_id=1146742909]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 1.9833121)
+mesh = SubResource("CylinderMesh_ys0nq")
+surface_material_override/0 = SubResource("StandardMaterial3D_osg0q")
+
+[node name="Thruster_L" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UR/Nacelle1" unique_id=184558370]
+transform = Transform3D(-0.99963313, -0.02708429, 1.1838922e-09, 0, -4.37114e-08, -1, 0.02708429, -0.99963313, 4.3695362e-08, 0, 0, 3)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_cl0ny")
+
+[node name="Glow" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UR/Nacelle1/Thruster_L" unique_id=15555402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_2x2ts")
+
+[node name="Wing" type="MeshInstance3D" parent="Fusalage/Wings/lower/Wing_UR" unique_id=864387043]
+transform = Transform3D(-0.46947154, 0.88294744, 8.742278e-08, 0.88294744, 0.46947154, 0, -4.1042508e-08, 7.718972e-08, -1, -2.4287622, 3.5692182, 2.0000517)
+mesh = SubResource("PrismMesh_mh6th")
+surface_material_override/0 = SubResource("StandardMaterial3D_qoed5")
+
+[node name="SelfLighting" type="Node3D" parent="Fusalage/Wings/lower" unique_id=1337931880]
+
+[node name="WingReflector_L" type="SpotLight3D" parent="Fusalage/Wings/lower/SelfLighting" unique_id=874539378]
+transform = Transform3D(0.08303783, 0.41066548, 0.9079969, 0.18119583, 0.8897342, -0.41897646, -0.97993505, 0.19931611, -0.0005292782, 0.4080925, 0.6407778, 0.013208032)
+light_color = Color(1, 0.98, 0.9, 1)
+light_energy = 4.0
+spot_range = 4.5
+spot_attenuation = 0.6
+spot_angle = 15.0
+
+[node name="WingReflector_R" type="SpotLight3D" parent="Fusalage/Wings/lower/SelfLighting" unique_id=1289146112]
+transform = Transform3D(-0.004325042, 0.4554876, -0.89023167, -0.11060946, -0.8849953, -0.452271, -0.9938545, 0.09651191, 0.054208905, -0.3770517, 0.6902267, 0.05568099)
+light_color = Color(1, 0.98, 0.9, 1)
+light_energy = 4.0
+spot_range = 4.5
+spot_attenuation = 0.6
+spot_angle = 15.0
+
+[node name="Thruster_center" type="MeshInstance3D" parent="Fusalage" unique_id=1114094211]
+transform = Transform3D(-2.9988995, -0.02708429, 1.1838919e-09, 0, -4.371139e-08, -1, 0.081252865, -0.99963313, 4.369535e-08, 0, 0.065, 3.5)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_cl0ny")
+
+[node name="Glow" type="MeshInstance3D" parent="Fusalage/Thruster_center" unique_id=497421848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("CylinderMesh_b4uhb")
+surface_material_override/0 = SubResource("StandardMaterial3D_2x2ts")
+
+[node name="FighterCam" type="Camera3D" parent="Fusalage" unique_id=183949554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=589847596]
+transform = Transform3D(0.99943686, -0.033452254, 0.0026415607, -0.002719791, -0.0022932738, 0.9999937, -0.03344598, -0.9994377, -0.0023829415, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_uqv20")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1926047116]
+transform = Transform3D(-0.10061492, -0.7700923, 0.6299481, 0.06530403, 0.62668395, 0.7765323, -0.9927799, 0.119268894, -0.012763633, 0, 0, 1.6887422)
+shape = SubResource("CapsuleShape3D_uqv20")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=382726505]
+transform = Transform3D(0.08363472, 0.76455945, 0.63910395, 0.08598378, 0.6334223, -0.76901436, -0.9927799, 0.119268894, -0.012763628, 0, 0, 1.6887422)
+shape = SubResource("CapsuleShape3D_uqv20")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=123903195]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=532693811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0647645)
+shape = SubResource("SphereShape3D_uqv20")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,43 +1,19 @@
 [gd_scene format=3]
 
 [ext_resource type="PackedScene" path="res://Helix_Level_2.tscn" id="helix_scene"]
-[ext_resource type="PackedScene" path="res://alien_diamond.tscn" id="diamond"]
-[ext_resource type="PackedScene" path="res://alien_machine.tscn" id="machine"]
+[ext_resource type="PackedScene" path="res://assets/alien_diamond.tscn" id="diamond"]
+[ext_resource type="PackedScene" path="res://assets/alien_machine.tscn" id="machine"]
 
 [node name="Megastructure_Lvl2" type="Node3D"]
 
 [node name="MazeHelix" parent="." instance=ExtResource("helix_scene")]
 
 [node name="AlienDiamond" parent="." instance=ExtResource("diamond")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1225, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 600, 0)
 
 [node name="AlienMachine_0" parent="." instance=ExtResource("machine")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 10.0, 0)
 [node name="SimpleMover" parent="AlienMachine_0"]
 speed = 0.5
 offset = 0
-
-[node name="AlienMachine_1" parent="." instance=ExtResource("machine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 10.0, 769.42096)
-[node name="SimpleMover" parent="AlienMachine_1"]
-speed = 0.7
-offset = 1.5
-
-[node name="AlienMachine_2" parent="." instance=ExtResource("machine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1059.0172, 10.0, 769.42084)
-[node name="SimpleMover" parent="AlienMachine_2"]
-speed = 0.9
-offset = 3
-
-[node name="AlienMachine_3" parent="." instance=ExtResource("machine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1713.5255, 10.0, -1244.9495)
-[node name="SimpleMover" parent="AlienMachine_3"]
-speed = 1.1
-offset = 4.5
-
-[node name="AlienMachine_4" parent="." instance=ExtResource("machine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1059.0176, 10.0, -3259.3193)
-[node name="SimpleMover" parent="AlienMachine_4"]
-speed = 1.3
-offset = 6
 

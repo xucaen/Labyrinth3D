@@ -4,20 +4,29 @@
 
 [sub_resource type="Environment" id="Environment_0khdd"]
 background_mode = 1
-background_color = Color(0.02, 0.03, 0.05, 1)
+background_color = Color(0.005, 0.005, 0.01, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.1, 0.15, 0.2, 1)
-ambient_light_energy = 0.3
+ambient_light_color = Color(0.06, 0.08, 0.12, 1)
+ambient_light_energy = 0.15
 glow_enabled = true
-glow_intensity = 0.9
-glow_strength = 1.2
-glow_bloom = 0.7
-glow_hdr_threshold = 0.6
+glow_intensity = 1.5
+glow_strength = 1.1
+glow_bloom = 0.3
+glow_hdr_threshold = 0.5
+glow_hdr_scale = 2.5
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 1.5
+sdfgi_cascades = 6
+sdfgi_min_cell_size = 0.1
+sdfgi_energy = 2.5
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_albedo = Color(0.2, 0.6, 0.8, 1)
-volumetric_fog_emission = Color(0.1, 0.3, 0.5, 1)
-volumetric_fog_emission_energy = 0.5
+volumetric_fog_density = 0.0008
+volumetric_fog_albedo = Color(0.1, 0.2, 0.4, 1)
+volumetric_fog_emission = Color(0.05, 0.1, 0.2, 1)
+volumetric_fog_emission_energy = 0.3
+volumetric_fog_length = 10000.0
+volumetric_fog_detail_spread = 2.0
 
 [node name="Node3D" type="Node3D" unique_id=273584794]
 script = ExtResource("1_0khdd")

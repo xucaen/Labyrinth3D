@@ -3,7 +3,10 @@ extends CharacterBody3D
 @export var speed: float = 10.0
 @export var look_sensitivity: float = 0.05
 @export var jump_velocity: float = 4.5
+@export var jetpack_thrust: float = 15.0      # How much force the motor adds
 @export var max_fall_speed: float = 12.0     # Terminal velocity going down
+@export var max_flight_speed: float = 6.0    # Cap for going UP (slower than falling)
+@export var jetpack_activation_delay: float = 0.2 # Small buffer after jump
 
 var camera: Camera3D
 var rotation_x: float = 0.0
@@ -27,31 +30,34 @@ func _physics_process(delta: float) -> void:
 	_handle_look_left_right(delta)
 	_handle_look_up_down(delta)
 
+
 func _handle_movement(delta: float) -> void:
 	var input_vector := Vector3.ZERO
 	input_vector.x = Input.get_joy_axis(0, 0)
 	input_vector.z = Input.get_joy_axis(0, 1)
 
+	# --- INPUT CHANGE HERE ---
+	# We check the Left Trigger axis (JOY_AXIS_LEFT_TRIGGER is index 4)
+	# We use a threshold (0.2) to see if it's being pressed down
 	var trigger_val = Input.get_joy_axis(0, JOY_AXIS_TRIGGER_LEFT)
 	var is_trigger_pressed = trigger_val > 0.2 
 
-	# --- NEW CODE INTEGRATED HERE ---
-	
-	# 1. GRAVITY (always applies, even when in the air)
-	if not is_on_floor():
-		velocity.y -= 9.8 * delta
-		velocity.y = max(velocity.y, -max_fall_speed)
-	else:
-		# Snap small downward force when grounded to stay glued to slopes/floors
-		if velocity.y < 0:
-			velocity.y = 0
-
-	# 2. JUMP (only works if touching the floor)
+	# 1. JUMP & JETPACK LOGIC
 	if is_on_floor():
 		if is_trigger_pressed:
 			velocity.y = jump_velocity
-
-	# --- END OF NEW CODE ---
+	else:
+		if is_trigger_pressed:
+			velocity.y += jetpack_thrust * delta
+			
+			if velocity.y > max_flight_speed:
+				velocity.y = max_flight_speed
+		
+		# 2. GRAVITY & TERMINAL VELOCITY
+		velocity.y -= 9.8 * delta
+		
+		if velocity.y < -max_fall_speed:
+			velocity.y = -max_fall_speed
 
 	# 3. HORIZONTAL MOVEMENT
 	if input_vector.length() > 0.1:
@@ -63,6 +69,7 @@ func _handle_movement(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+
 func _handle_look_left_right(delta: float) -> void:
 	# Right stick Horizontal (Axis 2)
 	var look_x := Input.get_joy_axis(0, 2)

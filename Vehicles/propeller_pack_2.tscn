@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://b5apd6oar6d1t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_Steel"]
+albedo_color = Color(0.4, 0.4, 0.45, 1)
+metallic = 1.0
+roughness = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_5b0yl"]
+material = SubResource("StandardMaterial3D_Steel")
+radius = 0.2
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_Carbon"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_cdaj7"]
+material = SubResource("StandardMaterial3D_Carbon")
+size = Vector3(0.1, 0.01, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_Orange"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.3, 0, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="TorusMesh" id="TorusMesh_1spri"]
+material = SubResource("StandardMaterial3D_Orange")
+inner_radius = 0.05
+outer_radius = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_0bum6"]
+material = SubResource("StandardMaterial3D_Steel")
+size = Vector3(0.5, 0.5, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_knd43"]
+material = SubResource("StandardMaterial3D_Steel")
+top_radius = 0.01
+bottom_radius = 0.05
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wriwe"]
+size = Vector3(1, 1.5, 0.5)
+
+[node name="PropellerPack" type="CharacterBody3D" unique_id=1184325155]
+
+[node name="Propellor motor" type="Node3D" parent="." unique_id=1837622469]
+
+[node name="sphere" type="MeshInstance3D" parent="Propellor motor" unique_id=901144482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21083, 0.0871396)
+mesh = SubResource("SphereMesh_5b0yl")
+
+[node name="blade_1" type="MeshInstance3D" parent="Propellor motor/sphere" unique_id=12639373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0115738, 0)
+mesh = SubResource("BoxMesh_cdaj7")
+
+[node name="blade_2" type="MeshInstance3D" parent="Propellor motor/sphere" unique_id=1909102464]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0115738, 0)
+mesh = SubResource("BoxMesh_cdaj7")
+
+[node name="wearable pack" type="Node3D" parent="." unique_id=1172343487]
+
+[node name="donut" type="CSGMesh3D" parent="wearable pack" unique_id=1980931637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.217713, 0.0871396)
+mesh = SubResource("TorusMesh_1spri")
+
+[node name="pack" type="MeshInstance3D" parent="wearable pack" unique_id=773489936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0395418, -0.0627366)
+mesh = SubResource("BoxMesh_0bum6")
+
+[node name="shaft" type="MeshInstance3D" parent="wearable pack" unique_id=1983148710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.741124, 0.0871396)
+mesh = SubResource("CylinderMesh_knd43")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1045105766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5551357, 0)
+shape = SubResource("BoxShape3D_wriwe")

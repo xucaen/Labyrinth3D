@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Vehicles/space_fighter_3w_lights.tscn" id = "space_fighter"]
+[ext_resource type="PackedScene" path="res://Vehicles/cycle_2.tscn" id = "cycle"]
+[ext_resource type="PackedScene" path="res://Vehicles/propeller_pack_2.tscn" id = "prop_pack"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="player"]
+[ext_resource type="PackedScene" path="res://world.tscn" id="world"]
+[ext_resource type="PackedScene" path="res://3DMaze_Cube_0.tscn" id="maze_cube_0"]
+[ext_resource type="PackedScene" path="res://Megastructure_Lvl0.tscn" id="mega_lvl_0"]
+[ext_resource type="PackedScene" path="res://Megastructure_Lvl1.tscn" id="mega_lvl_1"]
+[ext_resource type="PackedScene" path="res://Megastructure_Lvl2.tscn" id="mega_lvl_2"]
+
+
+[node name="Labyrinth3D" type="Node3D"]
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.666668, 108.5, 52.5)
+
+[node name="PropPackSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.666668, 108.5, 35)
+
+[node name="CycleSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.666668, 108.5, 26.25)
+
+[node name="SpaceFighterSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.666668, 109, 17.5)
+
+[node name="Player" parent="." instance=ExtResource("player")]
+
+[node name="Cycle" parent="." instance=ExtResource("cycle")]
+
+[node name="SpaceFighter" parent="." instance=ExtResource("space_fighter")]
+
+[node name="PropellerPack" parent="." instance=ExtResource("prop_pack")]
+
+[node name="Environment" parent="." instance=ExtResource("world")]
+
+[node name="CubeInstance_0" parent="." instance=ExtResource("maze_cube_0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Megastructure_0" parent="." instance=ExtResource("mega_lvl_0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1500, 0, 0)
+
+[node name="Megastructure_1" parent="." instance=ExtResource("mega_lvl_1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -750, 100, 1299.0381)
+
+[node name="Megastructure_2" parent="." instance=ExtResource("mega_lvl_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -750, 200, -1299.0381)
+
