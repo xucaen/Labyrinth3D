@@ -36,11 +36,14 @@ func _physics_process(delta: float) -> void:
 
 func _handle_flight_logic(delta: float) -> void:
 	# --- INPUT ---
-	var pitch_input = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)   # Up/Down
-	var yaw_input   = -Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)    # Left/Right
-	var throttle_input = -Input.get_joy_axis(0, JOY_AXIS_LEFT_Y) # Forward/Back
-	var roll_input = -Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
+	var throttle_input = -Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y) # Forward/Back
 
+	var pitch_input = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)   # Up/Down
+	var yaw_input   = -Input.get_joy_axis(0, JOY_AXIS_LEFT_X)    # Left/Right
+	var left_roll = Input.is_joy_button_pressed(0, JOY_BUTTON_LEFT_SHOULDER)
+	var right_roll = Input.is_joy_button_pressed(0, JOY_BUTTON_RIGHT_SHOULDER)
+	var roll_input = float(left_roll) - float(right_roll)
+	print("roll_input is ",roll_input)
 
 	# --- DEADZONE ---
 	var deadzone = 0.15
@@ -50,16 +53,16 @@ func _handle_flight_logic(delta: float) -> void:
 
 	# --- SETTINGS ---
 	var turn_speed = 2.5        # rotation speed
-	var roll_speed = 3.0
+	var roll_speed = 2.0
 	var acceleration = 100.0
 	var max_speed = 3000.0
 	var drag = 5.0
-	var max_roll = deg_to_rad(45.0)
+	var max_roll = deg_to_rad(30.0)
 	var max_pitch = deg_to_rad(180.0)
 	roll_input = clamp(roll_input, -max_roll, max_roll)
 	pitch_input = clamp(pitch_input, -max_pitch, max_pitch)
 
-	# --- ROTATION (this is the big missing piece) ---
+	# --- ROTATION ---
 	rotate_object_local(Vector3.RIGHT, pitch_input * turn_speed * delta) # pitch
 	rotate_y(yaw_input * turn_speed * delta)                             # yaw
 	rotate_object_local(Vector3.BACK, roll_input * roll_speed * delta)   # roll
