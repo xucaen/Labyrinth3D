@@ -139,6 +139,9 @@ mesh = SubResource("SphereMesh_j4mt1")
 transform = Transform3D(1, 0, 0, 0, -0.999941, 0.0108557325, 0, -0.0108557325, -0.999941, 0.001108408, 2.1958158, 0.02317655)
 mesh = SubResource("CylinderMesh_gq4bl")
 
+[node name="BulletSpawn" type="Marker3D" parent="Fusalage/Turrets/turret_R/meshCyl" unique_id=155580721]
+transform = Transform3D(1, 0, 0, 0, -4.3711374e-08, 0.9999996, 0, -0.9999996, -4.3711374e-08, 0, -1.9384022, 1.4416873e-06)
+
 [node name="turret_L" type="MeshInstance3D" parent="Fusalage/Turrets" unique_id=704084208]
 transform = Transform3D(1, 0, 0, 0, -0.01085569, 0.9999411, 0, -0.9999411, -0.01085569, -0.54, -0.008, -2.305)
 mesh = SubResource("SphereMesh_j4mt1")
@@ -146,6 +149,9 @@ mesh = SubResource("SphereMesh_j4mt1")
 [node name="meshCyl" type="MeshInstance3D" parent="Fusalage/Turrets/turret_L" unique_id=1841538654]
 transform = Transform3D(1, 0, 0, 0, -0.999941, 0.0108557325, 0, -0.0108557325, -0.999941, 0.001108408, 2.1958158, 0.02317655)
 mesh = SubResource("CylinderMesh_gq4bl")
+
+[node name="BulletSpawn" type="Marker3D" parent="Fusalage/Turrets/turret_L/meshCyl" unique_id=679810263]
+transform = Transform3D(1, 0, 0, 0, -4.3711374e-08, 0.9999996, 0, -0.9999996, -4.3711374e-08, 5.9604645e-08, -1.9391203, -1.2684613e-06)
 
 [node name="Wings" type="Node3D" parent="Fusalage" unique_id=475288423]
 
@@ -321,18 +327,18 @@ mesh = SubResource("CylinderMesh_b4uhb")
 surface_material_override/0 = SubResource("StandardMaterial3D_2x2ts")
 
 [node name="FighterCam" type="Camera3D" parent="Fusalage" unique_id=183949554]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20238125, -6.2757564)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=589847596]
-transform = Transform3D(0.99943686, -0.033452254, 0.0026415607, -0.002719791, -0.0022932738, 0.9999937, -0.03344598, -0.9994377, -0.0023829415, 0, 0, 0)
+transform = Transform3D(0.99943686, -0.03345245, 0.0026394748, -0.0027176435, -0.0022914628, 0.9999937, -0.033446133, -0.99943775, -0.002381084, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_uqv20")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1926047116]
-transform = Transform3D(-0.10061492, -0.7700923, 0.6299481, 0.06530403, 0.62668395, 0.7765323, -0.9927799, 0.119268894, -0.012763633, 0, 0, 1.6887422)
+transform = Transform3D(-0.10061488, -0.77009225, 0.6299479, 0.065304026, 0.62668383, 0.7765324, -0.9927799, 0.119268864, -0.012763603, 0, 0, 1.6887422)
 shape = SubResource("CapsuleShape3D_uqv20")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=382726505]
-transform = Transform3D(0.08363472, 0.76455945, 0.63910395, 0.08598378, 0.6334223, -0.76901436, -0.9927799, 0.119268894, -0.012763628, 0, 0, 1.6887422)
+transform = Transform3D(0.08363474, 0.7645595, 0.639104, 0.08598377, 0.6334222, -0.76901424, -0.99277985, 0.1192689, -0.012763602, 0, 0, 1.6887422)
 shape = SubResource("CapsuleShape3D_uqv20")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=123903195]

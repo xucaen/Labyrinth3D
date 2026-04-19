@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://btc7vcxigsut7"]
+
+[ext_resource type="Script" uid="uid://bg64fh4a4oyxn" path="res://scripts/enemy_drone.gd" id="1_jgo2a"]
+[ext_resource type="Script" uid="uid://c1odb5qg3m8ve" path="res://scripts/enemy_event_area.gd" id="2_hsg7m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cfwjv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogh5e"]
+albedo_color = Color(1, 1, 0.14117648, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ogh5e"]
+material = SubResource("StandardMaterial3D_ogh5e")
+
+[sub_resource type="SphereMesh" id="SphereMesh_jgo2a"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hsg7m"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfwjv"]
+albedo_color = Color(0.029506557, 0.029506557, 0.029506557, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ogh5e"]
+top_radius = 0.3
+bottom_radius = 0.4
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgo2a"]
+albedo_color = Color(0.5082409, 0.5084104, 0.557687, 1)
+metallic = 0.8
+roughness = 0.4
+rim_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsg7m"]
+albedo_color = Color(0.9019608, 0, 0.49411765, 1)
+emission_enabled = true
+emission = Color(0.3019608, 0, 0.16470589, 1)
+emission_energy_multiplier = 10.82
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uce2r"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1w4id"]
+material = SubResource("StandardMaterial3D_uce2r")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jgo2a"]
+radius = 50.0
+
+[node name="EnemyDrone" type="CharacterBody3D" unique_id=430694375]
+script = ExtResource("1_jgo2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1494631271]
+shape = SubResource("BoxShape3D_cfwjv")
+
+[node name="BODY" type="MeshInstance3D" parent="." unique_id=616020420]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 0, -0.0002989769)
+mesh = SubResource("PrismMesh_ogh5e")
+
+[node name="BALLJOINT" type="MeshInstance3D" parent="BODY" unique_id=905517894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33987343, -0.1304722, -5.7031224e-09)
+mesh = SubResource("SphereMesh_jgo2a")
+
+[node name="CANNON" type="MeshInstance3D" parent="BODY/BALLJOINT" unique_id=92038148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26188564, 1.1447385e-08)
+mesh = SubResource("CylinderMesh_hsg7m")
+surface_material_override/0 = SubResource("StandardMaterial3D_cfwjv")
+
+[node name="ENGINE" type="Node3D" parent="BODY" unique_id=1710658413]
+
+[node name="Thruster_L" type="MeshInstance3D" parent="BODY/ENGINE" unique_id=804411272]
+transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1, 0, 8.742278e-08, 0, -1.0000001, -1.8839371e-08, -0.43099457, -1.8839371e-08)
+mesh = SubResource("CylinderMesh_ogh5e")
+surface_material_override/0 = SubResource("StandardMaterial3D_jgo2a")
+
+[node name="Glow" type="MeshInstance3D" parent="BODY/ENGINE/Thruster_L" unique_id=1432057115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("CylinderMesh_ogh5e")
+surface_material_override/0 = SubResource("StandardMaterial3D_hsg7m")
+
+[node name="EYES" type="Node3D" parent="BODY" unique_id=1943734956]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BODY/EYES" unique_id=610165485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31773803, -0.14874005, -0.22500259)
+mesh = SubResource("SphereMesh_1w4id")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BODY/EYES" unique_id=1417681760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31773803, -0.14874008, 0.2654626)
+mesh = SubResource("SphereMesh_1w4id")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1748570266]
+script = ExtResource("2_hsg7m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=335804547]
+shape = SubResource("SphereShape3D_jgo2a")
+
+[node name="BulletSpawn" type="Marker3D" parent="." unique_id=566276895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.382132, -0.631333)

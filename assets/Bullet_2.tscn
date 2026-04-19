@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://rfktjwtx6ys2"]
+
+[ext_resource type="Script" uid="uid://dbh4np1inuwfm" path="res://scripts/bullet_1.gd" id="1_61tvg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_10s0n"]
+radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10s0n"]
+albedo_color = Color(0.015686275, 0, 0.7882353, 1)
+emission_enabled = true
+emission = Color(0.8784314, 0.96862745, 0, 1)
+emission_energy_multiplier = 8.68
+
+[sub_resource type="SphereMesh" id="SphereMesh_1s7eh"]
+material = SubResource("StandardMaterial3D_10s0n")
+radius = 0.05
+height = 0.1
+
+[node name="Bullet2" type="Node3D" unique_id=305546735]
+transform = Transform3D(0.9999999, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.9999999, -4.3711385e-08, 0, 0, 0)
+script = ExtResource("1_61tvg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=899409729]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1424112183]
+shape = SubResource("SphereShape3D_10s0n")
+
+[node name="fireball" type="MeshInstance3D" parent="." unique_id=1188653848]
+mesh = SubResource("SphereMesh_1s7eh")

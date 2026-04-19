@@ -2,8 +2,8 @@
 extends CharacterBody3D
 
 @export_group("Flight Stats")
-@export var max_thrust: float = 80.0
-@export var acceleration: float = 5.0
+@export var max_thrust: float = 1200.0
+@export var acceleration: float = 80.0
 @export var friction_drag: float = 2.0
 @export var gravity: float = 9.8
 
@@ -20,6 +20,29 @@ var can_enter: bool = false
 # --- NODES ---
 
 @onready var ship_camera: Camera3D = $Fusalage/FighterCam
+
+
+# --- WEAPONS ---
+const BULLET_SCENE = preload("res://assets/Bullet_1.tscn")
+@onready var muzzle_r: Marker3D = $Fusalage/Turrets/turret_R/meshCyl/BulletSpawn
+@onready var muzzle_l: Marker3D = $Fusalage/Turrets/turret_L/meshCyl/BulletSpawn
+@export var overheat_time: float = 2.0
+
+var fire_cooldown: float = 0.5 # Seconds between large caliber shots
+var time_since_last_shot: float = 0.0
+const POOL_SIZE = 20 # Total bullets available
+var bullet_pool: Array[Node3D] = []
+var pool_index: int = 0
+var is_overheated: bool = false
+
+func _ready() -> void:
+	# Create the bullets ahead of time
+	for i in range(POOL_SIZE):
+		var b = BULLET_SCENE.instantiate()
+		b.visible = false
+		b.set_process(false) # Stop it from moving while in the pool
+		get_tree().root.add_child.call_deferred(b)
+		bullet_pool.append(b)
 
 
 func _physics_process(delta: float) -> void:
@@ -43,7 +66,8 @@ func _handle_flight_logic(delta: float) -> void:
 	var left_roll = Input.is_joy_button_pressed(0, JOY_BUTTON_LEFT_SHOULDER)
 	var right_roll = Input.is_joy_button_pressed(0, JOY_BUTTON_RIGHT_SHOULDER)
 	var roll_input = float(left_roll) - float(right_roll)
-	print("roll_input is ",roll_input)
+	#print("roll_input is ",roll_input)
+	#print("throttle_input is ",throttle_input)
 
 	# --- DEADZONE ---
 	var deadzone = 0.15
@@ -52,9 +76,8 @@ func _handle_flight_logic(delta: float) -> void:
 	if abs(throttle_input) < deadzone: throttle_input = 0.0
 
 	# --- SETTINGS ---
-	var turn_speed = 2.5        # rotation speed
+
 	var roll_speed = 2.0
-	var acceleration = 100.0
 	var max_speed = 3000.0
 	var drag = 5.0
 	var max_roll = deg_to_rad(30.0)
@@ -79,8 +102,22 @@ func _handle_flight_logic(delta: float) -> void:
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed
 
+		
+	# --- WEAPON LOGIC ---
+	time_since_last_shot += delta
+
+	# Read the Right Trigger axis (JOY_AXIS_TRIGGER_RIGHT is index 5 in Godot 4)
+	var rt_trigger = Input.get_joy_axis(0, JOY_AXIS_TRIGGER_RIGHT)
+	#print("rt_trigger is ",rt_trigger)
+	if rt_trigger > 0.5 and time_since_last_shot >= fire_cooldown:
+		fire_weapons()
+		time_since_last_shot = 0.0
+
+
 	# --- MOVE ---
 	move_and_slide()
+
+
 
 
 func _check_for_entry() -> void:
@@ -121,3 +158,41 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body == player_ref:
 		can_enter = false
+
+
+
+func fire_weapons() -> void:
+	if is_overheated:
+		print("Turrets Overheated!")
+		return
+	# Try to fire from both muzzles
+	var shot_fired_r = attempt_shot(muzzle_r)
+	var shot_fired_l = attempt_shot(muzzle_l)
+
+	# If we've looped through the pool and nothing was available
+	if not shot_fired_r and not shot_fired_l:
+		trigger_overheat()
+
+func attempt_shot(muzzle: Marker3D) -> bool:
+	# Look for the next available bullet
+	for i in range(POOL_SIZE):
+		var b = bullet_pool[pool_index]
+		pool_index = (pool_index + 1) % POOL_SIZE
+		
+		# If the bullet isn't active, we can use it
+		if not b.is_processing():
+			spawn_from_pool(b, muzzle)
+			return true
+	return false
+
+func spawn_from_pool(bullet: Node3D, muzzle: Marker3D) -> void:
+	bullet.global_transform = muzzle.global_transform
+	bullet.visible = true
+	bullet.set_process(true)
+	if bullet.has_method("reset_bullet"):
+		bullet.reset_bullet()
+
+func trigger_overheat() -> void:
+	is_overheated = true
+	await get_tree().create_timer(overheat_time).timeout
+	is_overheated = false

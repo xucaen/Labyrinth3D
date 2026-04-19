@@ -1,49 +1,84 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cur0h6gng3w66"]
 
-[ext_resource type="PackedScene" path="res://Vehicles/space_fighter_3w_lights.tscn" id = "space_fighter"]
-[ext_resource type="PackedScene" path="res://Vehicles/cycle_2.tscn" id = "cycle"]
-[ext_resource type="PackedScene" path="res://Vehicles/propeller_pack_2.tscn" id = "prop_pack"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="player"]
-[ext_resource type="PackedScene" path="res://world.tscn" id="world"]
+[ext_resource type="Script" uid="uid://c23c5rfnmt1xy" path="res://scripts/npc_area_0.gd" id="8_rw1yl"]
+[ext_resource type="PackedScene" uid="uid://b7ugfxmnk7dw4" path="res://Vehicles/cycle_2.tscn" id="cycle"]
 [ext_resource type="PackedScene" path="res://3DMaze_Cube_0.tscn" id="maze_cube_0"]
 [ext_resource type="PackedScene" path="res://Megastructure_Lvl0.tscn" id="mega_lvl_0"]
 [ext_resource type="PackedScene" path="res://Megastructure_Lvl1.tscn" id="mega_lvl_1"]
 [ext_resource type="PackedScene" path="res://Megastructure_Lvl2.tscn" id="mega_lvl_2"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="player"]
+[ext_resource type="PackedScene" uid="uid://b5apd6oar6d1t" path="res://Vehicles/propeller_pack_2.tscn" id="prop_pack"]
+[ext_resource type="PackedScene" uid="uid://cfafgw3q1jmiy" path="res://Vehicles/space_fighter_3w_lights.tscn" id="space_fighter"]
+[ext_resource type="PackedScene" uid="uid://bxo17tf3kxivx" path="res://world.tscn" id="world"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_i5cko"]
+radius = 1000.0
 
-[node name="Labyrinth3D" type="Node3D"]
+[node name="Labyrinth3D" type="Node3D" unique_id=1316934917]
 
-[node name="PlayerSpawn" type="Marker3D" parent="."]
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=991416913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.666668, 108.5, 52.5)
 
-[node name="PropPackSpawn" type="Marker3D" parent="."]
+[node name="PropPackSpawn" type="Marker3D" parent="." unique_id=891488192]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.666668, 108.5, 35)
 
-[node name="CycleSpawn" type="Marker3D" parent="."]
+[node name="CycleSpawn" type="Marker3D" parent="." unique_id=165683401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.666668, 108.5, 26.25)
 
-[node name="SpaceFighterSpawn" type="Marker3D" parent="."]
+[node name="SpaceFighterSpawn" type="Marker3D" parent="." unique_id=1271041410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.666668, 109, 17.5)
 
-[node name="Player" parent="." instance=ExtResource("player")]
+[node name="Player" parent="." unique_id=709515662 instance=ExtResource("player")]
 
-[node name="Cycle" parent="." instance=ExtResource("cycle")]
+[node name="Cycle" parent="." unique_id=606442150 instance=ExtResource("cycle")]
 
-[node name="SpaceFighter" parent="." instance=ExtResource("space_fighter")]
+[node name="SpaceFighter" parent="." unique_id=1163015424 instance=ExtResource("space_fighter")]
 
-[node name="PropellerPack" parent="." instance=ExtResource("prop_pack")]
+[node name="PropellerPack" parent="." unique_id=944344438 instance=ExtResource("prop_pack")]
 
-[node name="Environment" parent="." instance=ExtResource("world")]
+[node name="Environment" parent="." unique_id=1847526343 instance=ExtResource("world")]
 
-[node name="CubeInstance_0" parent="." instance=ExtResource("maze_cube_0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="CubeInstance_0" parent="." unique_id=75405197 instance=ExtResource("maze_cube_0")]
 
-[node name="Megastructure_0" parent="." instance=ExtResource("mega_lvl_0")]
+[node name="Megastructure_0" parent="." unique_id=326048899 instance=ExtResource("mega_lvl_0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1500, 0, 0)
 
-[node name="Megastructure_1" parent="." instance=ExtResource("mega_lvl_1")]
+[node name="NPCArea_0" type="Area3D" parent="Megastructure_0" unique_id=595050412]
+script = ExtResource("8_rw1yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Megastructure_0/NPCArea_0" unique_id=1232315697]
+shape = SubResource("SphereShape3D_i5cko")
+
+[node name="Marker3D" type="Marker3D" parent="Megastructure_0/NPCArea_0" unique_id=336485461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -507.37183, 0, 0)
+
+[node name="Megastructure_1" parent="." unique_id=1523380632 instance=ExtResource("mega_lvl_1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -750, 100, 1299.0381)
 
-[node name="Megastructure_2" parent="." instance=ExtResource("mega_lvl_2")]
+[node name="NPCArea_1" type="Area3D" parent="Megastructure_1" unique_id=1572894923]
+script = ExtResource("8_rw1yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Megastructure_1/NPCArea_1" unique_id=961815288]
+shape = SubResource("SphereShape3D_i5cko")
+
+[node name="Marker3D" type="Marker3D" parent="Megastructure_1/NPCArea_1" unique_id=339348342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.180176, 0, -573.0575)
+
+[node name="Megastructure_2" parent="." unique_id=1239692074 instance=ExtResource("mega_lvl_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -750, 200, -1299.0381)
 
+[node name="NPCArea_2" type="Area3D" parent="Megastructure_2" unique_id=740527047]
+script = ExtResource("8_rw1yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Megastructure_2/NPCArea_2" unique_id=1812938061]
+shape = SubResource("SphereShape3D_i5cko")
+
+[node name="Marker3D" type="Marker3D" parent="Megastructure_2/NPCArea_2" unique_id=2143335566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.180176, 0, 446.53137)
+
+[connection signal="body_entered" from="Megastructure_0/NPCArea_0" to="Megastructure_0/NPCArea_0" method="_on_player_entered"]
+[connection signal="body_exited" from="Megastructure_0/NPCArea_0" to="Megastructure_0/NPCArea_0" method="_on_player_exited"]
+[connection signal="body_entered" from="Megastructure_1/NPCArea_1" to="Megastructure_1/NPCArea_1" method="_on_player_entered"]
+[connection signal="body_exited" from="Megastructure_1/NPCArea_1" to="Megastructure_1/NPCArea_1" method="_on_player_exited"]
+[connection signal="body_entered" from="Megastructure_2/NPCArea_2" to="Megastructure_2/NPCArea_2" method="_on_player_entered"]
+[connection signal="body_exited" from="Megastructure_2/NPCArea_2" to="Megastructure_2/NPCArea_2" method="_on_player_exited"]
