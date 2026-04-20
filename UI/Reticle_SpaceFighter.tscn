@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c4vd3v2utb7up"]
+
+[node name="ReticleSpaceFighter" type="Control" unique_id=1476196528]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=252181084]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Line_TopLeft" type="ColorRect" parent="." unique_id=643357395]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -250.0
+offset_right = -1.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.4, 1, 0, 1)
+
+[node name="Line_TopRight" type="ColorRect" parent="." unique_id=2051263822]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -250.0
+offset_right = -1.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.4, 1, 0, 1)

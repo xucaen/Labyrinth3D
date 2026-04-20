@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cfafgw3q1jmiy"]
 
 [ext_resource type="Script" uid="uid://db2jyeqh5xhtq" path="res://scripts/spaceFighter.gd" id="1_ylxob"]
+[ext_resource type="PackedScene" uid="uid://c4vd3v2utb7up" path="res://UI/Reticle_SpaceFighter.tscn" id="2_gxnfc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixxwf"]
 albedo_color = Color(0, 0, 0, 1)
@@ -328,6 +329,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2x2ts")
 
 [node name="FighterCam" type="Camera3D" parent="Fusalage" unique_id=183949554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20238125, -6.2757564)
+
+[node name="ReticleSpaceFighter" parent="Fusalage/FighterCam" unique_id=1476196528 instance=ExtResource("2_gxnfc")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=589847596]
 transform = Transform3D(0.99943686, -0.03345245, 0.0026394748, -0.0027176435, -0.0022914628, 0.9999937, -0.033446133, -0.99943775, -0.002381084, 0, 0, 0)

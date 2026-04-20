@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://3DMaze_Cube_0.tscn" id="maze_cube_0"]
+[ext_resource type="PackedScene" path="res://Megastructure_Lvl0.tscn" id="mega_lvl_0"]
+[ext_resource type="PackedScene" path="res://Megastructure_Lvl1.tscn" id="mega_lvl_1"]
+[ext_resource type="PackedScene" path="res://Megastructure_Lvl2.tscn" id="mega_lvl_2"]
+
+
+[node name="Generated" type="Node3D"]
+
+[node name="CubeInstance_0" parent="." instance=ExtResource("maze_cube_0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Megastructure_0" parent="." instance=ExtResource("mega_lvl_0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1500, 0, 0)
+
+[node name="Megastructure_1" parent="." instance=ExtResource("mega_lvl_1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -750, 100, 1299.0381)
+
+[node name="Megastructure_2" parent="." instance=ExtResource("mega_lvl_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -750, 200, -1299.0381)
+

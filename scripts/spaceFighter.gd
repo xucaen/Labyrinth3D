@@ -1,4 +1,4 @@
-#spaceFighter.gd
+# res://scripts/spaceFighter.gd
 extends CharacterBody3D
 
 @export_group("Flight Stats")
@@ -20,7 +20,7 @@ var can_enter: bool = false
 # --- NODES ---
 
 @onready var ship_camera: Camera3D = $Fusalage/FighterCam
-
+@onready var starfighter_reticle = $Fusalage/FighterCam/ReticleSpaceFighter
 
 # --- WEAPONS ---
 const BULLET_SCENE = preload("res://assets/Bullet_1.tscn")
@@ -133,6 +133,7 @@ func enter_ship() -> void:
 	player_ref.visible = false
 	player_ref.process_mode = Node.PROCESS_MODE_DISABLED
 	ship_camera.make_current()
+	starfighter_reticle.show()
 
 func exit_ship() -> void:
 	is_occupied = false
@@ -148,6 +149,8 @@ func exit_ship() -> void:
 	var p_cam = player_ref.find_child("Camera3D")
 	if p_cam:
 		p_cam.make_current()
+	
+	starfighter_reticle.hide()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":

@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://dkeenyeoe1x5u"]
+
+[ext_resource type="Script" uid="uid://bg64fh4a4oyxn" path="res://scripts/enemy_drone.gd" id="1_xg12a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nfj1r"]
+size = Vector3(2, 1.5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xg12a"]
+albedo_color = Color(0.16078432, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nfj1r"]
+material = SubResource("StandardMaterial3D_xg12a")
+radius = 1.0
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uce2r"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8qnfw"]
+material = SubResource("StandardMaterial3D_uce2r")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1w4id"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ekocg"]
+material = SubResource("StandardMaterial3D_1w4id")
+size = Vector3(0.5, 0.8, 0.1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_i20bx"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l5xm5"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxlok"]
+albedo_color = Color(0.029506557, 0.029506557, 0.029506557, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kvwy1"]
+top_radius = 0.3
+bottom_radius = 0.4
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfj1r"]
+albedo_color = Color(0.5082409, 0.5084104, 0.557687, 1)
+metallic = 0.8
+roughness = 0.4
+rim_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qnfw"]
+albedo_color = Color(0.9019608, 0, 0.49411765, 1)
+emission_enabled = true
+emission = Color(0.3019608, 0, 0.16470589, 1)
+emission_energy_multiplier = 10.82
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8qnfw"]
+radius = 50.0
+
+[node name="EnemyDroneX" type="CharacterBody3D" unique_id=984768922]
+script = ExtResource("1_xg12a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=344992746]
+shape = SubResource("BoxShape3D_nfj1r")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1653108951]
+mesh = SubResource("SphereMesh_nfj1r")
+
+[node name="EYES" type="Node3D" parent="Body" unique_id=1491613814]
+transform = Transform3D(0.012827835, 0, 0.99991775, 0, 1, 0, -0.99991775, 0, 0.012827835, 0, 0.6286645, -0.4369545)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/EYES" unique_id=354640942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31773803, -0.14874005, -0.22500259)
+mesh = SubResource("SphereMesh_8qnfw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body/EYES" unique_id=1675331191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31773803, -0.14874008, 0.2654626)
+mesh = SubResource("SphereMesh_8qnfw")
+
+[node name="Nose" type="MeshInstance3D" parent="Body" unique_id=1276534420]
+transform = Transform3D(-5.8720543e-05, 0.018691236, -0.9998253, 0.99999505, 0.0031415927, 0, 0.003141044, -0.99982035, -0.01869133, 0.038876414, 0.23654038, -1.1729367)
+mesh = SubResource("PrismMesh_ekocg")
+
+[node name="Turrets" type="Node3D" parent="Body" unique_id=1393351800]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0)
+
+[node name="BALLJOINT" type="MeshInstance3D" parent="Body/Turrets" unique_id=1277955731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0)
+mesh = SubResource("SphereMesh_i20bx")
+
+[node name="CANNON" type="MeshInstance3D" parent="Body/Turrets/BALLJOINT" unique_id=1928660548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26188564, 1.1447385e-08)
+mesh = SubResource("CylinderMesh_l5xm5")
+surface_material_override/0 = SubResource("StandardMaterial3D_bxlok")
+
+[node name="BulletSpawn" type="Marker3D" parent="Body/Turrets/BALLJOINT/CANNON" unique_id=460923081]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, -3.5527137e-15, 0, 3.5527137e-15, 0.99999976, 0, 0.33811435, -1.14473835e-08)
+
+[node name="BALLJOINT2" type="MeshInstance3D" parent="Body/Turrets" unique_id=371130115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
+mesh = SubResource("SphereMesh_i20bx")
+
+[node name="CANNON" type="MeshInstance3D" parent="Body/Turrets/BALLJOINT2" unique_id=337438772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26188564, 1.1447385e-08)
+mesh = SubResource("CylinderMesh_l5xm5")
+surface_material_override/0 = SubResource("StandardMaterial3D_bxlok")
+
+[node name="BulletSpawn" type="Marker3D" parent="Body/Turrets/BALLJOINT2/CANNON" unique_id=1164607508]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, -3.5527137e-15, 0, 3.5527137e-15, 0.99999976, 0, 0.33811435, -1.14473835e-08)
+
+[node name="ENGINE" type="Node3D" parent="Body" unique_id=2092693555]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.8445983)
+
+[node name="Thruster_L" type="MeshInstance3D" parent="Body/ENGINE" unique_id=1449112655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+mesh = SubResource("CylinderMesh_kvwy1")
+surface_material_override/0 = SubResource("StandardMaterial3D_nfj1r")
+
+[node name="Glow" type="MeshInstance3D" parent="Body/ENGINE/Thruster_L" unique_id=217240978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13203895, 0)
+mesh = SubResource("CylinderMesh_kvwy1")
+surface_material_override/0 = SubResource("StandardMaterial3D_8qnfw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2014733944]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=494516486]
+shape = SubResource("SphereShape3D_8qnfw")

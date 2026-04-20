@@ -1,4 +1,4 @@
-# GameManager.gd
+# res://scripts/GameManager.gd
 extends Node
 var target_spawn_name: String = "SpawnPoint"
 var current_level_id: int = 0 
