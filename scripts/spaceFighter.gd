@@ -59,15 +59,13 @@ func _physics_process(delta: float) -> void:
 
 func _handle_flight_logic(delta: float) -> void:
 	# --- INPUT ---
-	var throttle_input = -Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y) # Forward/Back
+	var throttle_input = -Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+	var pitch_input = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+	var yaw_input   = -Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
 
-	var pitch_input = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)   # Up/Down
-	var yaw_input   = -Input.get_joy_axis(0, JOY_AXIS_LEFT_X)    # Left/Right
 	var left_roll = Input.is_joy_button_pressed(0, JOY_BUTTON_LEFT_SHOULDER)
 	var right_roll = Input.is_joy_button_pressed(0, JOY_BUTTON_RIGHT_SHOULDER)
 	var roll_input = float(left_roll) - float(right_roll)
-	#print("roll_input is ",roll_input)
-	#print("throttle_input is ",throttle_input)
 
 	# --- DEADZONE ---
 	var deadzone = 0.15
@@ -76,48 +74,54 @@ func _handle_flight_logic(delta: float) -> void:
 	if abs(throttle_input) < deadzone: throttle_input = 0.0
 
 	# --- SETTINGS ---
-
-	var roll_speed = 2.0
 	var max_speed = 3000.0
 	var drag = 5.0
+	var roll_speed = 2.0
+
 	var max_roll = deg_to_rad(30.0)
-	var max_pitch = deg_to_rad(180.0)
-	roll_input = clamp(roll_input, -max_roll, max_roll)
-	pitch_input = clamp(pitch_input, -max_pitch, max_pitch)
+	var max_pitch = deg_to_rad(89.0)
 
-	# --- ROTATION ---
-	rotate_object_local(Vector3.RIGHT, pitch_input * turn_speed * delta) # pitch
-	rotate_y(yaw_input * turn_speed * delta)                             # yaw
-	rotate_object_local(Vector3.BACK, roll_input * roll_speed * delta)   # roll
+	# =========================================================
+	# 1. YAW (free turn, accumulative like real arcade flight)
+	# =========================================================
+	rotate_y(yaw_input * turn_speed * delta)
 
-	# --- FORWARD MOVEMENT ---
+	# =========================================================
+	# 2. PITCH (clamped envelope via safe rotation step)
+	# =========================================================
+	var pitch_step = pitch_input * turn_speed * delta
+	var new_pitch = rotation.x + pitch_step
+	rotation.x = clamp(new_pitch, -max_pitch, max_pitch)
+
+	# =========================================================
+	# 3. ROLL (absolute mapping, NOT accumulation)
+	# =========================================================
+	rotation.z = lerp(rotation.z, roll_input * max_roll, roll_speed * delta)
+
+	# =========================================================
+	# 4. FORWARD MOVEMENT
+	# =========================================================
 	var forward_dir = -transform.basis.z
-	
 	velocity += forward_dir * throttle_input * acceleration * delta
 
-	# --- DRAG (prevents infinite drifting) ---
+	# drag
 	velocity = velocity.lerp(Vector3.ZERO, drag * delta)
 
-	# --- CLAMP SPEED ---
+	# clamp speed
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed
 
-		
-	# --- WEAPON LOGIC ---
+	# =========================================================
+	# WEAPONS
+	# =========================================================
 	time_since_last_shot += delta
 
-	# Read the Right Trigger axis (JOY_AXIS_TRIGGER_RIGHT is index 5 in Godot 4)
 	var rt_trigger = Input.get_joy_axis(0, JOY_AXIS_TRIGGER_RIGHT)
-	#print("rt_trigger is ",rt_trigger)
 	if rt_trigger > 0.5 and time_since_last_shot >= fire_cooldown:
 		fire_weapons()
 		time_since_last_shot = 0.0
 
-
-	# --- MOVE ---
 	move_and_slide()
-
-
 
 
 func _check_for_entry() -> void:

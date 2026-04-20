@@ -12,17 +12,3 @@ func _on_body_entered(body: Node3D) -> void:
 		# Get the parent (EnemyDrone) and set its target/state
 		get_parent().target = body
 		get_parent().current_state = get_parent().State.ATTACK
-	
-	if body.name == "EnemyDrone":
-		get_parent().target = body
-		get_parent().current_state = get_parent().State.EVADE
-
-func _on_body_exited(body: Node3D) -> void:
-	if body.name == "Player":
-		# Tell the drone to return to formation
-		get_parent().target = null
-		get_parent().current_state = get_parent().State.RETURNING
-	
-	if body.name == "EnemyDrone":
-		get_parent().target = body
-		get_parent().current_state = get_parent().State.SEEKING

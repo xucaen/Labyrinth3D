@@ -47,7 +47,7 @@ func _spawn_next_drone():
 	
 	# Initialize drone data
 	drone.global_position = home_marker.global_position
-	drone.current_state = drone.State.FOLLOW_PATH
+	drone.current_state = drone.State.PATROL
 	
 	
 	fleet.append(drone)
